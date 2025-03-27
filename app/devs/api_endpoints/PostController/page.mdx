@@ -1,0 +1,45 @@
+# api/Post (PostController)
+Végpont, ami a posztokat kezeli
+
+## Kérések
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/Post` | Lekéri az összes posztot |
+| `GET /api/Post/{id}` | Lekér egy adott posztot |
+| `POST /api/Post/` | Lekér egy adott posztot |
+| `PATCH /api/Post/{id}` | Lekér egy adott posztot |
+| `DELETE /api/Post/{id}` | Lekér egy adott posztot |
+
+### `GET /api/Post`
+Lekéri az adatbázisban lévő összes posztot
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+### `GET /api/Post/{id}`
+Lekéri az adatbázisban lévő posztot azonosítója alapján.
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+### `POST /api/Post`
+Létrehoz egy új posztot
+
+#### Visszatérő kód
+`HTTP 204 - Created` - Ha a létrehozás sikeres volt
+`HTTP 500 - Internal Server Error` - Ha valami hiba lépett fel az új poszt létrehozása közben
+
+### `PATCH /api/Post/{id}`
+Módosít egy adatbázisban meglévő posztot.
+
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha sikeres volt a módosítás
+`HTTP 404 - Not Found` - Ha az adott poszt nem található
+`HTTP 500 - Internal Server Errort:` - Ha az adott poszt nem található
+
+### `DELETE /api/Post`
+Lekéri az adatbázisban lévő összes posztot
+
+#### Visszatérő kód
+`HTTP 200 - OK`

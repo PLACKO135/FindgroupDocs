@@ -1,0 +1,70 @@
+# Unit teszt dokumentáció
+
+A unit teszt során a `UserController`-t teszteltük, hogy az egyes metódusok és végpontok 
+biztosítják-e a helyes működést illetve kezeli az egyes hibás bemeneteket is. A teszt osztály neve a Test/Findgroup_Backend_Unit_Test mappában a neve: `TestUserController`
+
+## Hogy miért is a `UserController`-t teszteltük?
+A UserController a web szerver egyik központi eleme, amely felelős a felhasználók kezeléséért,
+beleértve az új felhasználók létrehozását, a meglévő felhasználók adatainak lekérdezését,
+módosítását és törlését. Mivel ezek az API végpontok kritikus szerepet játszanak az alkalmazás
+működésében, elengedhetetlen volt azok alapos tesztelése.
+
+A teszteléssel biztosítottuk, hogy:
+
+- A végpontok helyesen működnek megfelelő bemenet esetén.
+
+- A rendszer megfelelő hibakezelést végez érvénytelen vagy hiányos adatok esetén.
+
+- Az üzleti logika megfelelően működik.
+
+- A függőségek (pl. adatbázis réteg (ennek megfelelő repository-ja), mappelés) megfelelően mockolhatók és izoláltan tesztelhetők.
+
+## Hogyan is teszteltük?
+
+### Keretrendszerek
+A tesztelés során az xUnit keretrendszert használtuk a tesztesetek írására és a Moq keretrendszert a `UserController`-hez tartozó függőségek mockolására. Az tesztesetek izolálva voltak, tehát egy teszteset se függött a másik eredményértől.
+
+### A tesztelés lépései
+
+A tesztelés a következő lépésekből állt:
+1. **Tesztadat(ok)**
+	- A tesztelés során pár tesztesetnek muszáj volt megadni tesztadatokat, hogy könnyen követhessük, hogy a controller mégis mit csinál (pl. törlésnél vagy pedig egy új felhasználó hozzáadásánál)
+
+2. **Mockolás**
+	- Mivel a `UserController` függ az `IUserRepository` és az `IMapper`-től, ezért ezeket az interface-eket mockolni kelletett.
+	- Miután ezek sikeresen lettek mockolva, lepéldányosítjuk a controllert és hozzáadjuk a mockolt objektumokat
+	- Például:
+	```csharp
+		List<User> users = [];
+		var userRepoMock = new Mock<IUserRepository>();
+		var mapperMock = new Mock<IMapper>();
+		// itt lehetne állítani hogy a mockok például egyes metódusnál mit csináljanak
+		// Például
+		// userRepoMock.Setup(service => service.GetUsers()).Returns(users);
+		// végül jön a példányosítás
+		var controller = new UserController(userRepoMock.Object, mapperMock.Object);
+	```
+3. Metódus meghívása
+	- Miután készen voltunk, meg kellet hívnunk a controller metódusát, amire éppen tesztet akartunk végezni.
+
+4. Eredmények ellenörzése
+	- Kinyerjük az eredményt miután lefutott a metódus
+	- A kinyert eredményre csinálunk ellenörzéséket.
+	- Például:
+		1. Megfelelő kóddal tér vissza (200 - OK  vagy 404 - Not Found)
+		2. változott-e a teszt adat amit megadtunk (lista, paraméter, stb...)
+		3. A visszatérési érték BODY-jában az elvárt adatok vannak benne
+
+
+## Teszt esetek
+Itt található az összes teszt eset, amik sikeresen lefutottak a `TestUserController`-ben.
+
+| Teszt eset neve | Leírás |
+| --------------- | ------ |
+| tba 		  | tba    |
+
+## Függőségek / Használt csomagok
+A tesztelés során az alábbi csomagokat használtuk:
+
+- [xUnit](https://xunit.net/) - Tesztelési keretrendszer
+- [Moq](https://github.com/devlooped/moq) -  Mocking keretrendszer
