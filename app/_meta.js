@@ -3,5 +3,7 @@ export default {
   introduction: "Bemutatkozás 👋",
   sysspec: "Rendszer követelmények 📚",
   users: "Felhasználóknak",
+  admins:"Adminisztrátoroknak",
   devs: "Fejlesztőknek",
+ 
 };
