@@ -1,0 +1,45 @@
+# CategoryController (/api/Category)
+
+### Végpontok áttekintése
+
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/category` | Lekéri az összes kategóriát |
+| `POST /api/category` | Új kategória létrehozása (Admin jogosultság szükséges) |
+| `DELETE /api/category/{id}` | Kategória törlése (Admin jogosultság szükséges) |
+| `PUT /api/category` | Kategória módosítása |
+
+---
+
+### `GET /api/category`
+Lekéri az adatbázisban lévő összes kategóriát.
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+---
+
+### `POST /api/category`
+Létrehoz egy új kategóriát.  
+
+
+#### Visszatérő kód
+`HTTP 201 - Created`
+
+---
+
+### `DELETE /api/category/{id}`
+Törli a megadott azonosítójú kategóriát.  
+
+#### Visszatérő kód
+`HTTP 204 - No Content` (Sikeres törlés esetén)  
+`HTTP 400 - Bad Request` (Hiba esetén)
+
+---
+
+### `PUT /api/category`
+Módosít egy meglévő kategóriát.
+
+#### Visszatérő kód
+`HTTP 204 - No Content` (Sikeres módosítás esetén)  
+`HTTP 500 - Internal Server Error` (Hiba esetén)

@@ -4,7 +4,6 @@ import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
 import Logo from "../public/Logo.png";
 import Image from "next/image";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 
 
 export const metadata = {

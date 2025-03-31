@@ -2,9 +2,9 @@
 
 export default {
     tools: "Fejlesztői környezet 🛠️",
-    datadesign: "Adattervezés  \uf1c0",
-    api_endpoints: "Végpontok  ",
-    tests: "Tesztdokumentáció",
+    datadesign: "Adattervezés 🛢",
+    api_endpoints: "Végpontok 🖧",
+    tests: "Tesztdokumentáció 🔧",
     development_features: "Továbbfejlesztési ötletek 💡",
     resources: "Források 🔥",
 };

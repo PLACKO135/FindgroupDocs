@@ -1,0 +1,81 @@
+## Üzenetkezelő API
+
+### Végpontok áttekintése
+
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/message` | Lekéri az összes üzenetet (Admin jogosultság szükséges) |
+| `POST /api/message/send/group` | Üzenet küldése egy csoportba (Felhasználói/Admin jogosultság szükséges) |
+| `POST /api/message/send/user` | Üzenet küldése egy felhasználónak (Felhasználói/Admin jogosultság szükséges) |
+| `GET /api/message/list/user` | Két felhasználó közötti üzenetek lekérése |
+| `POST /api/message/list/group/{id}` | Csoportüzenetek lekérése |
+| `PATCH /api/message` | Üzenet módosítása |
+| `DELETE /api/message` | Üzenet törlése |
+
+---
+
+### `GET /api/message`
+Lekéri az összes üzenetet az adatbázisból.  
+**Admin jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres lekérés esetén)  
+
+---
+
+### `POST /api/message/send/group`
+Üzenetet küld egy adott csoportba.  
+**Felhasználói/Admin jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 201 - Created` (Sikeres küldés esetén)  
+`HTTP 400 - Bad Request` (Érvénytelen csoport-azonosító)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)
+
+---
+
+### `POST /api/message/send/user`
+Üzenetet küld egy másik felhasználónak.  
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres küldés esetén)  
+`HTTP 404 - Not Found` (A címzett nem található)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)
+
+---
+
+### `GET /api/message/list/user`
+Lekéri két felhasználó közötti üzeneteket.
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres lekérés esetén)  
+
+---
+
+### `POST /api/message/list/group/{id}`
+Lekéri az adott csoport üzeneteit.
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres lekérés esetén)  
+
+---
+
+### `PATCH /api/message`
+Módosít egy üzenetet.
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres módosítás esetén)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)
+
+---
+
+### `DELETE /api/message`
+Töröl egy üzenetet.
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres törlés esetén)  
+`HTTP 400 - Bad Request` (Ha az üzenet ID nincs megadva)  
+`HTTP 404 - Not Found` (Ha az üzenet nem található)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)
+
+

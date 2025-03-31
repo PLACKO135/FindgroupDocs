@@ -1,0 +1,48 @@
+# AccountController (/api/Account)
+A fiókok összeköttetésére illetve a Google bejelentkezését ellátó végpont
+
+
+
+
+## Végpontok 
+
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `POST /api/account/login-google` | Bejelentkezés Google fiókkal |
+| `GET /api/account/link/{provider}` | Külső fiók összekapcsolása |
+| `GET /api/account/link/list` | Összekapcsolt fiókok listázása |
+| `POST /api/account/unlink/{provider}` | Külső fiók leválasztása  |
+
+
+### `POST /api/account/login-google`
+Bejelentkezteti a felhasználót a Google fiókjával.
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha a bejelentkezés sikeres volt <br/>
+`HTTP 500 - Internal Server Error` - Ha a bejelentkezéskor  hiba lépett fel <br/>
+
+### `GET /api/account/link/{provider}`
+Külső fiók összekapcsolása a felhasználói fiókkal.
+
+#### Paraméterek
+**`provider`** - string <br/>
+A szolgáltató neve
+
+> [!NOTE]
+> 
+> A szolgátatók neve megtalálható a project `Program.cs` fájlában
+
+#### Visszatérő kód
+`HTTP 302 - Temporary Redirect` - Átvisz a szolgáltató bejelentkezési oldalára
+
+### `GET /api/account/link/list`
+Lekéri a felhasználóhoz kapcsolt külső fiókok listáját.
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha a lekérdezés sikere.
+
+### `POST /api/account/unlink/{provider}`
+Külső fiók leválasztása.
+
+#### Visszatérő kód
+`HTTP 501 - Not Implemented`
