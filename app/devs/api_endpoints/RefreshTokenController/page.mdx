@@ -1,0 +1,19 @@
+
+# RefreshTokenController (/api/RefreshToken)
+
+### Végpontok áttekintése
+
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `POST /api/RefreshToken/refresh` | Felhasználói token frissítése |
+
+---
+
+### `POST /api/refreshtoken/refresh`
+Frissíti a felhasználó hozzáférési tokenjét.
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres frissítés esetén)  
+`HTTP 401 - Unauthorized` (Ha a frissítő token hiányzik vagy érvénytelen)  
+`HTTP 404 - Not Found` (Ha a felhasználó nem található)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)

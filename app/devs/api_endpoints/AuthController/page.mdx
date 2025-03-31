@@ -1,0 +1,81 @@
+# api/Auth (AuthController)
+A felhasználók bejelentkezése, kijelentkezése, illetve a token hitelesítést ellátó végpont
+## Kérések
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/Auth/validate-token` | Validálja a megadott tokent|
+| `POST /api/Auth/login` | Bejelentkezteti az adott felhasználót |
+| `POST /api/Auth/register` | Regisztrál egy új felhasználót |
+| `POST /api/Auth/logout` | Kijelentkezteti az adott felhasználót |
+
+### `GET /api/Auth/validate-token`
+Validálja a beérkező JWT tokent1
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha a JWT token érvényes
+`HTTP 401 - Unauthorized` - Ha a JWT token nem érvényes (lejárt, aláírás nem egyezik, stb...)
+
+### `POST /api/Auth/login`
+Bejelentkezteti az adott felhasználót
+
+#### Paraméterek
+BODY:
+  - **`model`** - LoginDTO <br/>
+  A felhasználó név és jelszó, amit a végpont megkap
+
+#### Visszatérő kód
+`HTTP 200 - OK` -  Ha a Bejelentkezés sikeres <br/>
+`HTTP 500 - Internal Server Error` -  Ha a Bejelentkezés sikerestelen vagy ha probléma lépett fel a bejelentkezés során <br/>
+
+#### Megjegyzés
+Sikeres bejelentkezéskor a szerver az access- és refreshtoken-t sütikben adja vissza
+
+
+### `POST /api/Auth/register`
+Regisztrál egy új felhasználót az adatbázisba
+
+BODY:
+  - **`model`** - RegisterUserDTO <br/>
+  A felhasználó név és jelszó, amit a végpont megkap
+
+#### Visszatérő kód
+`HTTP 201 - Created` - Ha a létrehozás sikeres volt <br/>
+`HTTP 500 - Internal Server Error` - Ha valami hiba lépett fel a regisztrálás során
+
+
+### `POST /api/Auth/logout`
+Kijelentkezteti a felhasználót
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha a kijelentkezés sikeres volt<br/>
+`HTTP 401 - Unauthorized` - Ha a  felhasználó JWT tokenje lejárt<br/>
+`HTTP 500 - Bad Request` - Ha valami hiba lépett fel a  kijelentkezés közben
+
+### DTO-k
+
+#### LoginDTO
+```cs
+namespace Findgroup_Backend.Models.DTOs.Input
+{
+    public sealed record LoginDTO
+    {
+        public required string Username { get; init; }
+        public required string Password { get; init; }
+    }
+}
+```
+#### RegisterUserDTO
+```cs
+namespace Findgroup_Backend.Models.DTOs.Input
+{
+    public sealed record RegisterUserDTO
+    {
+        public string Id = Guid.NewGuid().ToString();
+        public required string UserName { get; init; }
+        public required string Password { get; init; }
+        public required string Email { get; init; }
+        public string? PhoneNumber { get; init; }
+    }
+}
+
+```

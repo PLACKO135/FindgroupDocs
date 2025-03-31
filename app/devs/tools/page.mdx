@@ -1,26 +1,62 @@
-# Eszközök
+# Feljesztői környezet
 
- Használt programok és nyelvek
+## Használt programok és nyelvek
+
+### React
+#### Hogy miért is ezt használtuk?
+A komponens alapú fejlesztése miatt gyorsabban lehetett új felhasználható elemeket készíteni.
+Emellett ebben a keretrendszerben volt a legtöbb tapasztalatunk és az SPA (Single-page Application)
+természete miatt a dinamikus weblapokat nagyon könnyű volt létrehozni.
+
+### C#
+#### Hogy miért is ezt használtuk?
+Egyszerű szintaxisa és a Nuget csomagkezelőnek köszönhetően nagyon gyorsan lehet fejleszteni benne. Mivel a nyelv platform független, mint a Java, ezért rengeteg sok applikációt lehet pl. MacOS-re vagy Linux-ra fejleszteni is. A nuget package manager miatt egy új csomag hozzáadása csak pár kattintásra volt és hiba nélkül lefutott. Emellett figyelmeztet minket a csomagkezelő ha egy olyan csomagot töltöttünk le, aminek biztonsági rése volt vagy nem megbízható forrásból származik.
+
+### WPF
+#### Hogy miért is ezt használtuk?
+XML alapú leíró nyelvének köszönhetően nagyon szép és modern grafikus alkalmazásokat lehet csinálni.
+Az MVVM (Model-View-ViewModel) programozási minta lehetővé tette, hogy külön válasszuk a felhasználói felüklet (UI) és a mögötte lévő kód fejlesztését, így ezáltal könnyen tesztelhetővé tettük a programot.
+
+### ASP.NET
+#### Hogy miért is ezt használtuk?
+A könnyen beilleszthető middleware-ek és pár csomagnak köszönhetően nem volt nehéz egy biztonságos, és használatra kész web szervert fejleszteni. A JWT middleware és az Identity keretrendszer miatt sok időt spóroltunk meg, mert ezek nélkül a felhasználó osztályt, a token kezelést ill. generálást, a bejelentkezési hitelesítést és a nyomon követést saját magunktól kellett volna leimplementálni. Továbbá az Entity Framework le egyszerűsítette az adatbázis és a szerver közti kommunikációk és nagyon jól lehetett követni az eddigi használt migrációkat.
+
+
+## Verziókövetés és project management
+### Git/Github
+#### Miért is ezt használtuk?
+Verziókövetésre és a csapatban való dolgozásra a githubot használtuk. Célunk az volt: hogy a kódbázis minden módosítását és történetét nyomon kövessük. Az új funkciók implementálása külön ágakon lehetővé tette, hogy úgy hozzon be újdonságokat, hogy ne sértsük meg a fő projektet.
+
+### Atlassian Jira
+#### Miért is ezt használtuk?
+Az agilis fejlesztési módszer gyakorlására, illetve a feladatok nyomon követésére a Jira-t használtuk. A Jira boardok és workflow-oknak köszönhetően vizuálisan követhettük a feladatok állapotát és a fejlesztési ciklus jelenlegi helyzetét. És a sprintek miatt könnyen előre meg tudtuk határozni, hogy mégis a hét folyamán miket akartunk megtervezni és megvalósítani.
+
 
 ## Programok
- 
+Az alábbi programokat és fejlesztői környezeteket használtuk a projekt készítése közben: 
+
 **Web frontend**:
-- Visual Studio Code
+- [Visual Studio Code](https://code.visualstudio.com)
 
 **Web backend, Admin alkalmazás**:
-- Visual Studio 2022
+- [Visual Studio 2022 Community Edition](https://visualstudio.microsoft.com/vs/)
 
-### Ezekhez szükséges dolgok
+**UI tervek**:
+- [Figma](https://www.figma.com)
+
+### Ezekhez szükséges eszközök
 
 - [Node.js](https://nodejs.org/en/download)
-- [.NET 9.0](https://download.visualstudio.microsoft.com/download/pr/b0032fde-aac9-4c3e-b78c-4bd605910241/8d2aa21baac4aef9b996671cd8a48fb2/dotnet-sdk-9.0.202-win-x64.exe)
+- [.NET 9.0](https://learn.microsoft.com/hu-hu/dotnet/core/whats-new/dotnet-9/overview)
 
-## Nyelvek 
+## További információ a használt nyelvekről/keretrendszerekről
 
 **Web frontend**:
 - [React](https://react.dev)
 - [Axios](https://axios-http.com/docs/intro)
+- [Typescript](https://www.typescriptlang.org/)
 
 **Web backend, Admin alkalmazás**:
 - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
 - [WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/?view=netdesktop-9.0)
+- [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet)

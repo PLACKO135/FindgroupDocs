@@ -1,0 +1,70 @@
+#  FriendshipController (/api/Friendship)
+Barátságok kezelésére alkalmas végpont
+
+### Végpontok áttekintése
+
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/friendship` | Lekéri az összes barátságot |
+| `GET /api/friendship/list/{id}` | Lekéri egy adott felhasználó barátságait |
+| `POST /api/friendship/send/{id}` | Barátfelkérés küldése (User jogosultság szükséges) |
+| `POST /api/friendship/reject/{id}` | Barátfelkérés elutasítása (User jogosultság szükséges) |
+| `POST /api/friendship/accept/{id}` | Barátfelkérés elfogadása (User jogosultság szükséges) |
+| `DELETE /api/friendship/delete/{id}` | Barátság törlése (User jogosultság szükséges) |
+
+---
+
+### `GET /api/friendship`
+Lekéri az adatbázisban lévő összes barátságot.
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+---
+
+### `GET /api/friendship/list/{id}`
+Lekéri a megadott azonosítójú felhasználó összes barátságát.
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+---
+
+### `POST /api/friendship/send/{id}`
+Elküld egy barátfelkérést a megadott azonosítójú felhasználónak.  
+**User jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres küldés esetén)  
+`HTTP 400 - Bad Request` (Ha a felhasználó saját magának próbál küldeni barátfelkérést)
+
+---
+
+### `POST /api/friendship/reject/{id}`
+Elutasít egy barátfelkérést.  
+**User jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres elutasítás esetén)  
+`HTTP 404 - Not Found` (Ha a barátság nem található)
+
+---
+
+### `POST /api/friendship/accept/{id}`
+Elfogad egy barátfelkérést.  
+**User jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 202 - Accepted` (Sikeres elfogadás esetén)  
+`HTTP 404 - Not Found` (Ha a barátság nem található)
+
+---
+
+### `DELETE /api/friendship/delete/{id}`
+Töröl egy barátságot.  
+**User jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres törlés esetén)  
+`HTTP 404 - Not Found` (Ha a barátság nem található)  
+`HTTP 500 - Internal Server Error` (Hiba esetén)

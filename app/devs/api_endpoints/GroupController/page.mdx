@@ -1,0 +1,72 @@
+# GroupController (/api/Group)
+
+### Végpontok áttekintése
+
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/Group` | Lekéri az összes csoportot |
+| `GET /api/Group/{id}` | Lekér egy adott csoportot azonosító alapján |
+| `POST /api/Group/create` | Új csoport létrehozása |
+| `POST /api/Group/join` | Csatlakozás egy csoporthoz (Felhasználói jogosultság szükséges) |
+| `POST /api/Group/leave` | Kilépés egy csoportból (Felhasználói jogosultság szükséges) |
+| `DELETE /api/Group/{name}` | Csoport törlése (Felhasználói jogosultság szükséges) |
+
+---
+
+### `GET /api/group`
+Lekéri az adatbázisban lévő összes csoportot.
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+---
+
+### `GET /api/group/{id}`
+Lekéri a megadott azonosítójú csoportot.
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres lekérés esetén)  
+`HTTP 400 - Bad Request` (Érvénytelen azonosító)  
+`HTTP 404 - Not Found` (Ha a csoport nem található)
+
+---
+
+### `POST /api/group/create`
+Létrehoz egy új csoportot.
+
+#### Visszatérő kód
+`HTTP 201 - Created` (Sikeres létrehozás esetén)  
+`HTTP 400 - Bad Request` (Érvénytelen paraméterek esetén)
+
+---
+
+### `POST /api/group/join`
+Csatlakozik egy csoporthoz.  
+**Felhasználói jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres csatlakozás esetén)  
+`HTTP 400 - Bad Request` (Érvénytelen csoport- vagy felhasználóazonosító)  
+`HTTP 409 - Conflict` (Ha a felhasználó már a csoport tagja)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)
+
+---
+
+### `POST /api/group/leave`
+Kilép egy csoportból.  
+**Felhasználói jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres kilépés esetén)  
+`HTTP 400 - Bad Request` (Érvénytelen kérés)  
+
+---
+
+### `DELETE /api/group/{name}`
+Törli a megadott nevű csoportot.  
+**Felhasználói jogosultság szükséges.**
+
+#### Visszatérő kód
+`HTTP 200 - OK` (Sikeres törlés esetén)  
+`HTTP 400 - Bad Request` (Ha a név üres)  
+`HTTP 500 - Internal Server Error` (Egyéb hiba esetén)

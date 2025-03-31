@@ -1,0 +1,52 @@
+# Továbbfejlesztési ötletek
+Ebben a fejezetben bemutatjuk azokat a fejlesztési irányokat és bővítési lehetőségeket, amelyek hozzájárulhatnak a projekt funkcionalitásának növeléséhez, a felhasználói élmény javításához és a rendszer hatékonyságának optimalizálásához. Ezek az ötletek a jelenlegi implementációra építenek, és a projekt jövőbeli fejlődésének alapját képezhetik.
+
+## Státusz jelzés
+A felhasználók nem látják, hogy mások mikor vanna fent és mikor nem, ezért jó továbbfejlesztési ötletnek gondoljuk azt, hogy ezt lehetővé tegyük.
+### A probléma
+Mivel a felhasználók semmilyen módon nem tudják nyomon követni azt, hogy ki és mikor van fent, ezért jelentősen romlik az oldalon szerzett élményük.
+### A megoldás
+Az `AspNetUsers` táblában létre lehetne hozni egy `Status` mezőt, aminek 2 értéke lehet: ONLINE és OFFLINE, és ezek szerint jelezhetnénk a felhasználók felé a frontened valamivel , esetleg kiiratással vagy pedig egy ikonnal.
+
+
+## Aktivitáskövetés
+Egyik továbbfejlesztési lehetőség, amely jelentősen javíthatná a felhasználói élményt, egy aktivitáskövető rendszer bevezetése. Ez lehetővé tenné a felhasználók számára, hogy lássák, ki milyen tevékenységet végez a platformon.
+
+### A probléma
+Jelenleg a felhasználók nem tudják valós időben követni mások aktivitását, ami korlátozza az interakciós lehetőségeket és csökkenti a közösségi élményt.
+
+### A megoldás
+Egy valós idejű aktivitásjelző rendszer bevezetése, amely megmutatná, hogy egy adott felhasználó például éppen üzenetet ír, játékban van, vagy más módon aktív. Mivel a webes alkalmazások nem tudnak hozzáférni, hogy éppen milyen folyamatok futnak a kliens gépén (biztonági okokból), ezért írni kéne egy külön programot, ami a felhasználó gépén nyomon követi az összes, jelenleg futó folyamatot és azt felküldi a szervernek. Ezt a programot lehetne a weblapon állítani, hogy esetleg kapcsoljon ki, számítógép indításakor induljon, és még sok más.
+
+## Több szolgáltatás hozzáadása
+Jelenleg a felhasználók csak 2 fiókot tudnak összekapcsolni, Steam és Bungie, ezért jó Továbbfejlesztési ötlet lenne, ha a felhasználók akár több, alapból létrehozott fiókot és össze tudnának kapcsolni.
+
+
+### A probléma
+Bizonyos szolgáltatások integrálása speciális követelményekhez kötött. Például:
+
+- A Bungie API használatához a projektnek érvényes tanúsítvánnyal kell rendelkeznie (azaz HTTPS-en keresztül kell futnia), különben a felhasználók nem tudják hitelesíteni a fiókjukat.
+
+- Egyes szolgáltatók előzetes jóváhagyást kérnek az API-használathoz (pl. űrlap beküldése, érvényes domain megléte).
+
+### A megoldás
+Egy rugalmasabb hitelesítési és API-integrációs rendszer kiépítése, amely támogatja a különböző szolgáltatások egyedi követelményeit. Ez lehetővé tenné a felhasználók számára, hogy egyszerűbben és biztonságosabban kapcsolják össze fiókjaikat más platformokkal. Illetve megoldást is nyújtana, ha esetleg a projektnek lenne domainje.
+
+
+## Többnyelvűség támogatása
+A projekt jelenlegi verziója egyetlen nyelven érhető el (angol), ami korlátozza a felhasználói bázis elérését. Egy többnyelvű felhasználói felület bevezetése javíthatná az oldal elérhetőségét és felhasználói élményét különböző nyelvterületeken.  
+
+### A probléma
+- A platformot jelenleg csak egy adott nyelvet beszélő felhasználók tudják könnyen használni.  
+- A nemzetközi felhasználók számára a nyelvi akadályok nehezíthetik a regisztrációt és a funkciók megértését.  
+- A szolgáltatás növekedésével a nemzetközi piac elérése versenyelőnyt jelenthet.  
+
+### A megoldás
+A rendszer többnyelvűsítésének megvalósítása a következő módokon történhetne, például:  
+- **Dinamikuasan váltható nyelvi beállítások:** A felhasználók a profiljukban vagy az oldal alján egy nyelvválasztó segítségével választhatnák ki a kívánt nyelvet.  
+- **Automatikus nyelvfelismerés:** A rendszer a böngésző beállításai vagy a felhasználó IP-címe alapján ajánlhatná fel az alapértelmezett nyelvet.  
+- **Nyelvi fájlok és fordítások:** Az alkalmazás lokalizációs fájlok (pl. JSON, XML vagy adatbázis-alapú) segítségével tárolná a különböző nyelvi verziókat, amelyeket egyszerűen lehetne frissíteni.  
+### Várható előnyök
+- A nemzetközi közönség elérése és a felhasználói bázis növekedése.  
+- Jobb felhasználói élmény a különböző nyelvterületekről érkező látogatók számára.  
+- A platform professzionálisabb megjelenése és nagyobb piaci potenciál.  

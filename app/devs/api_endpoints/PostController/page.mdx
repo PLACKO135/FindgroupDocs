@@ -1,0 +1,51 @@
+# api/Post (PostController)
+Végpont, ami a posztokat kezeli
+
+## Kérések
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/Post` | Lekéri az összes posztot |
+| `GET /api/Post/{id}` | Lekér egy adott posztot |
+| `POST /api/Post/` | Létrehoz egy új posztot |
+| `PATCH /api/Post/{id}` | Módosít egy adott posztot |
+| `DELETE /api/Post/{id}` | Töröl egy adott posztot |
+
+### `GET /api/Post`
+Lekéri az adatbázisban lévő összes posztot
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+### `GET /api/Post/{id}`
+Lekéri az adatbázisban lévő posztot azonosítója alapján.
+
+#### Visszatérő kód
+`HTTP 200 - OK`
+
+### `POST /api/Post`
+Létrehoz egy új posztot
+
+#### Visszatérő kód
+`HTTP 204 - Created` - Ha a létrehozás sikeres volt<br/>
+`HTTP 500 - Internal Server Error` - Ha valami hiba lépett fel az új poszt létrehozása közben
+
+### `PATCH /api/Post/{id}`
+Módosít egy adatbázisban meglévő posztot.
+
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha sikeres volt a módosítás <br/>
+`HTTP 404 - Not Found` - Ha az adott poszt nem található<br/>
+`HTTP 500 - Internal Server Errort:` - Ha valami probléma lépett fel a módosítás alatt
+
+### `DELETE /api/Post/{id}`
+Törli az adatbázisban szereplő posztot
+
+#### Paraméterek
+**`id`** - int <br/>
+A poszt azonosítója
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha sikeres volt a törlés<br/>
+`HTTP 404 - Not Found` - Ha az adott poszt nem található<br/>
+`HTTP 500 - Internal Server Errort:` - Ha valami probléma lépett fel a törlés alatt

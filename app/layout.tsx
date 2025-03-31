@@ -6,6 +6,7 @@ import Logo from "../public/Logo.png";
 import Image from "next/image";
 import "./globals.css";
 
+
 export const metadata = {
   title: "FindGroup.gg",
 };
@@ -25,7 +26,7 @@ const navbar = (
     logoLink={"https://github.com/Ordinary56"}
     projectLink="https://github.com/Ordinary56/FindGroup.gg"
     chatLink="https://discord.gg/nAey9rqTER"
-    />
+  />
 );
 const footer = (
   <Footer>{new Date().getFullYear()} © FindGroup.gg.</Footer>
@@ -55,6 +56,7 @@ export default async function RootLayout({
       </Head>
       <body>
         <Layout
+
           toc={{title: "Ezen oldal tartalma", backToTop:"Vissza az oldalal tetejére"}}
           navbar={navbar}
           themeSwitch={{ light: "🌞 Világos mód", dark: "🌙 Sötét mód", system: "💻 Rendszer" }}

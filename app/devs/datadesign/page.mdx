@@ -1,0 +1,25 @@
+# Adatbázis 
+<img src="/database.png" alt="Adatbázis" title="db-img-full" style={{margin: "25px"}}/>
+
+Az alábbi ER modellen látható a projekt adatbázisa. Az `AspNetUsers` táblán kívűl az adatbázisban szereplő táblák egyediek. Az `AspNetUsers` tábla azért van, mert a kódbázisban szereplő `User` model az [IdentityUser](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuser?view=aspnetcore-1.1) osztálytól öröklődik.
+> [!NOTE]
+>
+> Megjegyzés: Egyes összekötésnél az alábbi módon vannak leírva a kapcsolatok.
+> 
+> Például: háromszög - kör -> 1 az n-hez kapcsolatot jelöli
+
+## Adatbázis táblák
+Itt található az összes adatbázisban szereplő tábla neve és egy rövid leírás hozzá
+
+| Tábla neve | Leírás |
+| ---------- | ------ |
+| AspNetUsers | Ez a tábla írja le a felhasználókat |
+| Posts | Ez a tábla tartalmazza az összes posztot, amit a felhasználók majd látni fognak frontenden. |
+| Group | Ez a tábla írja le a csoportokat. Minden csoportnak van egy készítője, és üzenetei (Lásd Messages) |
+| UserGroup | Ez a tábla köti össze a felhasználókat és a csoportokat. Minden felhasználó tartozhat több csoportba, és minden csoportnak lehet több felhasználója is. |
+| Categories | Ez a tábla felelős a posztok kategóriába való sorolásáért. Minden poszt csakis 1 kategóriában lehet benne |
+| Messages | Ez a tábla tartlamazza az eddigi küldött üzenetek. Az üzenetek lehetnek például 2 felhasználó között, vagy pedig tartozhatnak egy adott csoporthoz, de nem tartozhatnak egyszerre mindkettőnek. |
+| Activities | Ez a tábla írja lea  felhasználók jelenlegi aktivitását. Ha például egy felhasználó megnyit egy programot, akkor |
+| Friendships | Ez a tábla írja le a felhasználók közti barátságot. A felhasználók tudnak egymásnak küldeni, elfogadni illetve elutasítani kérelmeket. |
+
+

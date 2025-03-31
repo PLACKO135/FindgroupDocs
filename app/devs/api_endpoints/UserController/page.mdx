@@ -1,0 +1,60 @@
+# api/User (UserController)
+Végpont, amik a felhasználók kezelésére szolgál
+
+> [!WARNING]
+>
+> Minden végpont, amin ezen a kontrolleren taláható le van védve. Amennyiben a kérő nincsen bejelentkezve, akkor az alábbi végpontok egy `HTTP 401 - Unauthorized` hibakóddal térnek vissza
+
+## Kérések
+| Kérés - Végpont | Leírás |
+| --------------- | ------ |
+| `GET /api/User` | Lekéri az összes felhasználót |
+| `GET /api/User/{id}` | Lekér egy adott felhasználót |
+| `PATCH /api/User/{id}` | Módosít egy felhasználót |
+| `DELETE /api/User/{id}` | Töröl egy felhasználót |
+
+### `GET /api/User`
+Lekéri az adatbázisban az összes felhasználót
+
+#### Visszatérő kód
+`HTTP 200 - OK`  <br/>
+
+### `GET /api/User/{id}`
+Lekéri az adatbázisban az adott azonosítóval ellátott felhasználót
+
+#### Paraméterek
+**`id`** - string <br/>
+A felhasználó azonosítója
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha a kérő be van jelentkezve és az azonosító létezik az adatbáziban. <br/>
+`HTTP 404 - Not Found` - Ha a kérő be van jelentkezve és az azonosító nem létezik az adatbáziban. <br/>
+
+
+### `PATCH /api/User/{id}`
+Módosítja az adatbázisban szereplő felhasználót
+
+#### Paraméterek
+**`id`** - string <br/>
+A felhasználó azonosítója
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha az adott felhasználó be van jelentkezve.
+`HTTP 500 - Internal Server Error` - Ha valami hiba lépett fel a módosítással kapcsolatban
+
+
+### `DELETE /api/User/{id}`
+Törli az adott azonosítóval ellátott felhasználót az adatbázisból
+
+
+#### Paraméterek
+**`id`** - string <br/>
+A felhasználó azonosítója
+
+#### Visszatérő kód
+`HTTP 200 - OK` - Ha a felhasználó sikeresen törölve lett az adatbázisból <br/>
+`HTTP 404 - Not found` - Ha az azonosító nem szerepel az adatbázisban <br/>
+`HTTP 500 - Internal Server Error` - Ha valami hiba lépett fel a törlés folyamatában
+
+
+
