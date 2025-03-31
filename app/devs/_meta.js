@@ -3,5 +3,4 @@
 export default{
     tools: "Eszközök 🛠️",
     resources: "Források 🔥",
-     troubleshooting: "Hibaelhárítás 👾",
 };
