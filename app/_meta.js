@@ -5,5 +5,5 @@ export default {
   users: "Felhasználóknak",
   admins:"Adminisztrátoroknak",
   devs: "Fejlesztőknek",
-  troubleshooting: "Hibaelhárítás 👾",
+ 
 };
